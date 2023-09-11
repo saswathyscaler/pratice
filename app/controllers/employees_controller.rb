@@ -1,7 +1,6 @@
 class EmployeesController < ApplicationController
 
     before_action :set_employee, only: [:show, :edit, :update, :destroy]
-    skip_before_action :verify_authenticity_token # Disable CSRF protection for API
   
     # Show all employees in JSON format
     def index
@@ -54,16 +53,16 @@ class EmployeesController < ApplicationController
 
   
   # EXAMPLE FOR CREATE STUDENT
+        
   
-  
-#   {
-#     "student": {
-#       "first_name": "John",
-#       "last_name": "Doe",
-#       "email": "john.doe@example.com",
-#       "contact_number": "123-456-7890",
-#       "address": "123 Main St",
-#       "date_of_birth": "1990-01-01",
-#       "rating": 85
-#     }
-#   }
+  # {
+  #   "student": {
+  #     "first_name": "John",
+  #     "last_name": "Doe",
+  #     "email": "john.doe@example.com",
+  #     "contact_number": "123-456-7890",
+  #     "address": "123 Main St",
+  #     "date_of_birth": "1990-01-01",
+  #     "rating": 85
+  #   }
+  # }
