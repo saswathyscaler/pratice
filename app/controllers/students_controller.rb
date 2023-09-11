@@ -31,7 +31,7 @@ class StudentsController < ApplicationController
     if @student.save
       render json: @student, status: :created
     else
-      render json: @student.errors, status: :unprocessable_entity
+      render json: { errors: @student.errors.full_messages }, status: :unprocessable_entity
     end
   end
   

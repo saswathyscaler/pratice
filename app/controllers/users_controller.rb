@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
-      end
+      end 
 
       def login
         @user = User.find_by(email: params[:email])

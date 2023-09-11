@@ -23,27 +23,23 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
 
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to course_url(@course), notice: "Course was successfully created." }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+    if @course.save
+      render json: { message: 'Course created successfully', course: @course }, status: :created
+    else
+      render json: { errors: @course.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
-  def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to course_url(@course), notice: "Course was successfully updated." }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+
+
+ def update
+    @course = Course.find(params[:id])
+
+    if @course.update(course_params)
+      render json: { message: 'Course updated successfully', course: @course }, status: :ok
+    else
+      render json: { errors: @course.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
